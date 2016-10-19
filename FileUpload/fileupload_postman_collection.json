@@ -1,0 +1,70 @@
+{
+	"id": "b305d905-8807-a7fd-22b0-66ecc307c423",
+	"name": "File Upload",
+	"description": "",
+	"order": [
+		"f6d88982-fd24-d971-ad2b-c91fccc99527",
+		"a7fde545-1b61-07c5-88aa-7b6f31ce9b96"
+	],
+	"folders": [],
+	"timestamp": 1476864837208,
+	"owner": "477465",
+	"public": false,
+	"published": false,
+	"requests": [
+		{
+			"id": "a7fde545-1b61-07c5-88aa-7b6f31ce9b96",
+			"headers": "",
+			"url": "http://localhost:54320/api/File?filename=hello",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "b305d905-8807-a7fd-22b0-66ecc307c423",
+			"data": [
+				{
+					"key": "g",
+					"value": "163380_4552878292395_1066073526_n.jpg",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "GET File",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1476864979846,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "f6d88982-fd24-d971-ad2b-c91fccc99527",
+			"headers": "",
+			"url": "http://localhost:54320/api/File/hello",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "b305d905-8807-a7fd-22b0-66ecc307c423",
+			"data": [
+				{
+					"key": "g",
+					"value": "163380_4552878292395_1066073526_n.jpg",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "POST Upload File",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1476864837207,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}
