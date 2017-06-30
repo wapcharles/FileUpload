@@ -33,8 +33,10 @@ namespace FileUpload.Controllers
                 if (!string.IsNullOrEmpty(filename))
                 {
                     extension = Path.GetExtension(filename);
-                    var renamedFile = type;
-                    file.SaveAs(uploadPath + "\\" + renamedFile);
+                    
+                    //var renamedFile = type;
+
+                    file.SaveAs(uploadPath + $@"\{filename}");
                 }
             }
 

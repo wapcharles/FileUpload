@@ -1,24 +1,51 @@
-﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+﻿@section Styles {
+    <link href="~/js/dropzone.css" rel="stylesheet" />
+}
+
+@section Scripts {
+
+    <script src="~/js/dropzone.js"></script>
+    <script>
+
+        // $('div')
+        // # - ID
+        // . - Class, multiple
+        // div#poo.hello <div id="poo" class="hello"></div>
+        // <hr class="red" />
+        // $('.red')
+        $('#my-awesome-dropzone').dropzone({ url: "/api/file/TestFile2" });
+
+    </script>
+}
+
+<div class="jumbotron">
+    <h1>File Upload Demos</h1>
+    <p class="lead">These demos are used for demonstrating file upload.</p>
+    <p><a href="http://github.com/garrettwong/FileUpload" class="btn btn-primary btn-lg">Github &raquo;</a></p>
 </div>
+
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
+        <h2>File Upload via MVC Controller</h2>
+
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <h2>File Upload via ApiController</h2>
+
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
+        <h2>Dropzone.js</h2>
+
+        <p>
+            <a href="http://www.dropzonejs.com/#installation" 
+               target="_blank">http://www.dropzonejs.com/#installation</a>
+            Dropzone.js
+        </p>
+        
+        <form action="~/api/File/TestFile"
+              class="dropzone"
+              id="my-awesome-dropzone"></form>
     </div>
 </div>

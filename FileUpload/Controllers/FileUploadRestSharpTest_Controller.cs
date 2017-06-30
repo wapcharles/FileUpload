@@ -17,8 +17,6 @@ namespace FileUpload.Controllers
         {
             var client = new RestClient("http://localhost:54320/api/FileUploadRestSharpTest");
             var request = new RestRequest(Method.GET);
-            request.AddHeader("postman-token", "ac584f0a-4534-0278-bd2b-e4b1b9c6995a");
-            request.AddHeader("cache-control", "no-cache");
             request.AddHeader("content-type", "multipart/form-data; boundary=---011000010111000001101001");
             request.AddParameter("multipart/form-data; boundary=---011000010111000001101001", "-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"g\"; filename=\"[object Object]\"\r\nContent-Type: false\r\n\r\n\r\n-----011000010111000001101001--", ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
