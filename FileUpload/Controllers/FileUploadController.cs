@@ -32,13 +32,22 @@ namespace FileUpload.Controllers
                 string filename = file.FileName;
                 string extension = file.ContentType;
 
+                var curFolderPath = uploadPath;
+                while (filename.Contains("/"))
+                {
+                    var indexOf = filename.IndexOf('/');
+                    curFolderPath += "\\" + filename.Substring(0, indexOf);
+                    Directory.CreateDirectory(curFolderPath);
+                    filename = filename.Substring(indexOf + 1);
+                }
+
                 if (!string.IsNullOrEmpty(filename))
                 {
                     extension = Path.GetExtension(filename);
-                    
+
                     //var renamedFile = type;
 
-                    file.SaveAs(uploadPath + $@"\{filename}");
+                    file.SaveAs(curFolderPath + $@"\{filename}");
                 }
             }
 
@@ -52,7 +61,7 @@ namespace FileUpload.Controllers
             try
             {
                 var response = new HttpResponseMessage();
-                
+
                 var uploadPath = ConfigurationManager.AppSettings["UploadPath"];
 
                 byte[] filedata = File.ReadAllBytes(uploadPath + "\\" + filename);
