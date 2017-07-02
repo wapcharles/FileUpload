@@ -2,7 +2,7 @@
 <!-- http://html5-demos.appspot.com/static/html5storage/demos/upload_directory/index.html -->
 
 @section Styles{
-    <link rel="stylesheet" type="text/css" href="~/js/jquery.tree/enahnced.css" />
+    <link rel="stylesheet" type="text/css" href="~/js/jquery.tree/tree-view.css" />
 
     <style>
         html, body {
@@ -238,6 +238,8 @@
             }
 
             this.init = function (e) {
+                console.log('ON CHANGE', e);
+
                 // Reset
                 html_ = [];
                 tree_ = {};
@@ -266,6 +268,7 @@
 
         var tree = new Tree('#dir-tree');
 
+        // ON CHANGE
         $('#file_input').change(tree.init);
 
         // Initial resize to force scrollbar in when file loads
@@ -315,12 +318,40 @@
             }
         });
     </script>
+
+    <script>
+        $(function () {
+            $('#btnUpload').click(function () {
+                console.log(tree.fileList); 
+
+                var data = new FormData();
+
+                for (var i = 0; i < tree.fileList.length; i++) {
+                    data.append('Tree_' + i, tree.fileList[i]);
+                }
+                var ajaxRequest = $.ajax({
+                    type: "POST",
+                    url: "/api/File/TREE",
+                    contentType: false,
+                    processData: false,
+                    data: data
+                });
+
+                ajaxRequest.done(function (xhr, textStatus) {
+                    // Do other operation
+                });
+            })
+        })
+    </script>
 }
 
 <div style="margin-top:60px;">
     <div id="container">
+        <button class="btn btn-primary" id="btnUpload">Upload</button>
+
         <div>
             <input type="file" id="file_input" webkitdirectory directory />
+            
             <ul id="dir-tree"></ul>
         </div>
 

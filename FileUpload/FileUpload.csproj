@@ -208,7 +208,7 @@
     <Content Include="Global.asax" />
     <Content Include="js\dropzone.css" />
     <Content Include="js\dropzone.js" />
-    <Content Include="js\jquery.tree\enahnced.css" />
+    <Content Include="js\jquery.tree\tree-view.css" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
