@@ -10,11 +10,13 @@
         // $('div')
         // # - ID
         // . - Class, multiple
-        // div#poo.hello <div id="poo" class="hello"></div>
+        // div#test.hello <div id="test" class="hello"></div>
         // <hr class="red" />
         // $('.red')
-        $('#my-awesome-dropzone').dropzone({ url: "/api/file/TestFile2" });
-
+        $(function () {
+            $('#webapiDropzone').dropzone({ url: "/api/file/TestFile2" });
+        });
+        
     </script>
 }
 
@@ -28,13 +30,15 @@
     <div class="col-md-4">
         <h2>File Upload via MVC Controller</h2>
 
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+        <p><a class="btn btn-info" href="~/MVCFileUpload">MVCFileUpload &raquo;</a></p>
     </div>
+
     <div class="col-md-4">
         <h2>File Upload via ApiController</h2>
 
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
     </div>
+
     <div class="col-md-4">
         <h2>Dropzone.js</h2>
 
@@ -46,6 +50,6 @@
         
         <form action="~/api/File/TestFile"
               class="dropzone"
-              id="my-awesome-dropzone"></form>
+              id="webapiDropzone"></form>
     </div>
 </div>

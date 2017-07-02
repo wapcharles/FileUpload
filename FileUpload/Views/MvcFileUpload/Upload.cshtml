@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Upload";
+}
+
+<h2>MVCFileUpload</h2>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#btnUploadFile').on('click', function () {
+                var data = new FormData();
+
+                var files = $("#fileUpload").get(0).files;
+
+                console.log('Files retrieved', files, $('#fileUpload').get(0), $('#fileUpload').get(1));
+
+                // Add the uploaded image content to the form data collection
+                for (var i = 0; i < files.length; i++) {
+                    data.append('Upload_' + i, files[i]);
+                }
+
+                // Make Ajax request with the contentType = false, and procesDate = false
+                var ajaxRequest = $.ajax({
+                    type: "POST",
+                    url: "MVCFileUpload/Index",
+                    contentType: false,
+                    processData: false,
+                    data: data
+                });
+
+                ajaxRequest.done(function (xhr, textStatus) {
+                    // Do other operation
+                });
+            });
+
+            $("#file_input").on('change', function (e) {
+                console.log('change', e.target.files);
+            });
+
+            $('#btnWebkitUploadFile').on('click', function (e) {
+
+                var data = new FormData();
+
+                var files = $("#file_input").get(0).files;
+
+                console.log('Files retrieved', files, $('#fileUpload').get(0), $('#fileUpload').get(1));
+
+                // Add the uploaded image content to the form data collection
+                for (var i = 0; i < files.length; i++) {
+                    data.append('Upload_' + i, files[i]);
+                }
+
+                // Make Ajax request with the contentType = false, and procesDate = false
+                //var ajaxRequest = $.ajax({
+                //    type: "POST",
+                //    url: "MVCFileUpload/Index",
+                //    contentType: false,
+                //    processData: false,
+                //    data: data
+                //});
+
+                //ajaxRequest.done(function (xhr, textStatus) {
+                //    // Do other operation
+                //});
+            });
+        });
+    </script>
+}
+
+<div class="col-sm-4">
+    <input type="file" name="FileUpload1" id="fileUpload" multiple class="btn btn-success" />
+    <br />
+
+    <input id="btnUploadFile" type="button" value="Upload File" class="btn btn-primary" />
+</div>
+
+<div class="col-sm-4">
+    <input type="file" id="file_input" webkitdirectory="" directory="">
+
+    <input id="btnWebkitUploadFile" type="button" value="Upload File" class="btn btn-primary" />
+</div>
+
+<div class="col-sm-4">
+
+    @Html.ActionLink("Documents", "Downloads")
+</div>

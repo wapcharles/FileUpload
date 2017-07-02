@@ -24,9 +24,11 @@ namespace FileUpload.Controllers
             var uploadPath = ConfigurationManager.AppSettings["UploadPath"];
 
             Directory.CreateDirectory(uploadPath);
+
             foreach (string fileKeyName in httpRequest.Files)
             {
                 HttpPostedFile file = httpRequest.Files[fileKeyName];
+
                 string filename = file.FileName;
                 string extension = file.ContentType;
 
@@ -43,6 +45,7 @@ namespace FileUpload.Controllers
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
+        [HttpGet]
         [Route("api/File")]
         public HttpResponseMessage Get(string filename)
         {
@@ -51,9 +54,9 @@ namespace FileUpload.Controllers
                 var response = new HttpResponseMessage();
                 
                 var uploadPath = ConfigurationManager.AppSettings["UploadPath"];
-                response = new HttpResponseMessage();
 
                 byte[] filedata = File.ReadAllBytes(uploadPath + "\\" + filename);
+
                 response.Content = new ByteArrayContent(filedata);
                 response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
                 {
