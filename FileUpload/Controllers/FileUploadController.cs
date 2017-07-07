@@ -16,6 +16,8 @@ namespace FileUpload.Controllers
 
         }
 
+        [Action1DebugActionWebApiFilter]
+        [TransactionLog("FileUploadController")]
         [Route("api/File/{type}")]
         public HttpResponseMessage Post(string type)
         {
