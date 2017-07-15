@@ -194,7 +194,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\MvcFileUploadController.cs" />
-    <Compile Include="Controllers\TransactionLogAttribute.cs" />
+    <Compile Include="Controllers\TransactionLogFilter.cs" />
+    <Compile Include="Controllers\WorkoutController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
