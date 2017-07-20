@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -194,6 +195,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\FileTreeController.cs" />
     <Compile Include="Controllers\FileUploadRestSharpTest_Controller.cs" />
+    <Compile Include="Controllers\FineUploaderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\MvcFileUploadController.cs" />
@@ -215,6 +217,171 @@
     <Content Include="js\dropzone.css" />
     <Content Include="js\dropzone.js" />
     <Content Include="js\jquery.tree\tree-view.css" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\all.fine-uploader.core.js" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\all.fine-uploader.core.min.js" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\all.fine-uploader.js" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\all.fine-uploader.min.js" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\continue.gif" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\edit.gif" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\fine-uploader-gallery.css" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\fine-uploader-gallery.min.css" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\fine-uploader-new.css" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\fine-uploader-new.min.css" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\fine-uploader.css" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\fine-uploader.min.css" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\loading.gif" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\pause.gif" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\placeholders\not_available-generic.png" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\placeholders\waiting-generic.png" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\processing.gif" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\retry.gif" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\templates\default.html" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\templates\gallery.html" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\templates\simple-thumbnails.html" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\trash.gif" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\azure.fine-uploader.core.js" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\azure.fine-uploader.core.min.js" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\azure.fine-uploader.js" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\azure.fine-uploader.min.js" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\continue.gif" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\edit.gif" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\fine-uploader-gallery.css" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\fine-uploader-gallery.min.css" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\fine-uploader-new.css" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\fine-uploader-new.min.css" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\fine-uploader.css" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\fine-uploader.min.css" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\loading.gif" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\pause.gif" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\placeholders\not_available-generic.png" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\placeholders\waiting-generic.png" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\processing.gif" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\retry.gif" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\templates\default.html" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\templates\gallery.html" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\templates\simple-thumbnails.html" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\trash.gif" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\azure.jquery.fine-uploader.js" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\azure.jquery.fine-uploader.min.js" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\continue.gif" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\edit.gif" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\fine-uploader-gallery.css" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\fine-uploader-gallery.min.css" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\fine-uploader-new.css" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\fine-uploader-new.min.css" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\fine-uploader.css" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\fine-uploader.min.css" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\loading.gif" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\pause.gif" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\placeholders\not_available-generic.png" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\placeholders\waiting-generic.png" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\processing.gif" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\retry.gif" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\templates\default.html" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\templates\gallery.html" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\templates\simple-thumbnails.html" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\trash.gif" />
+    <Content Include="node_modules\fine-uploader\dnd\dnd.js" />
+    <Content Include="node_modules\fine-uploader\dnd\dnd.min.js" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\continue.gif" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\edit.gif" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\fine-uploader-gallery.css" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\fine-uploader-gallery.min.css" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\fine-uploader-new.css" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\fine-uploader-new.min.css" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\fine-uploader.core.js" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\fine-uploader.core.min.js" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\fine-uploader.css" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\fine-uploader.js" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\fine-uploader.min.css" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\fine-uploader.min.js" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\iframe.xss.response.js" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\loading.gif" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\pause.gif" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\placeholders\not_available-generic.png" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\placeholders\waiting-generic.png" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\processing.gif" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\retry.gif" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\templates\default.html" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\templates\gallery.html" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\templates\simple-thumbnails.html" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\trash.gif" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\continue.gif" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\edit.gif" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\fine-uploader-gallery.css" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\fine-uploader-gallery.min.css" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\fine-uploader-new.css" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\fine-uploader-new.min.css" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\fine-uploader.css" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\fine-uploader.min.css" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\iframe.xss.response.js" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\jquery.fine-uploader.js" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\jquery.fine-uploader.min.js" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\loading.gif" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\pause.gif" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\placeholders\not_available-generic.png" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\placeholders\waiting-generic.png" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\processing.gif" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\retry.gif" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\templates\default.html" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\templates\gallery.html" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\templates\simple-thumbnails.html" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\trash.gif" />
+    <Content Include="node_modules\fine-uploader\lib\all.js" />
+    <Content Include="node_modules\fine-uploader\lib\azure.js" />
+    <Content Include="node_modules\fine-uploader\lib\core\all.js" />
+    <Content Include="node_modules\fine-uploader\lib\core\azure.js" />
+    <Content Include="node_modules\fine-uploader\lib\core\index.js" />
+    <Content Include="node_modules\fine-uploader\lib\core\s3.js" />
+    <Content Include="node_modules\fine-uploader\lib\core\traditional.js" />
+    <Content Include="node_modules\fine-uploader\lib\dnd.js" />
+    <Content Include="node_modules\fine-uploader\lib\jquery\azure.js" />
+    <Content Include="node_modules\fine-uploader\lib\jquery\s3.js" />
+    <Content Include="node_modules\fine-uploader\lib\jquery\traditional.js" />
+    <Content Include="node_modules\fine-uploader\lib\s3.js" />
+    <Content Include="node_modules\fine-uploader\lib\traditional.js" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\continue.gif" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\edit.gif" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\fine-uploader-gallery.css" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\fine-uploader-gallery.min.css" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\fine-uploader-new.css" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\fine-uploader-new.min.css" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\fine-uploader.css" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\fine-uploader.min.css" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\loading.gif" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\pause.gif" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\placeholders\not_available-generic.png" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\placeholders\waiting-generic.png" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\processing.gif" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\retry.gif" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\s3.fine-uploader.core.js" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\s3.fine-uploader.core.min.js" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\s3.fine-uploader.js" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\s3.fine-uploader.min.js" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\templates\default.html" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\templates\gallery.html" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\templates\simple-thumbnails.html" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\trash.gif" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\continue.gif" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\edit.gif" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\fine-uploader-gallery.css" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\fine-uploader-gallery.min.css" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\fine-uploader-new.css" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\fine-uploader-new.min.css" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\fine-uploader.css" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\fine-uploader.min.css" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\loading.gif" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\pause.gif" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\placeholders\not_available-generic.png" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\placeholders\waiting-generic.png" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\processing.gif" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\retry.gif" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\s3.jquery.fine-uploader.js" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\s3.jquery.fine-uploader.min.js" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\templates\default.html" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\templates\gallery.html" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\templates\simple-thumbnails.html" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\trash.gif" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -242,6 +409,54 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="js\jquery.tree\jquery.tree.js" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\all.fine-uploader.core.js.map" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\all.fine-uploader.core.min.js.map" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\all.fine-uploader.js.map" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\all.fine-uploader.min.js.map" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\fine-uploader-gallery.min.css.map" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\fine-uploader-new.min.css.map" />
+    <Content Include="node_modules\fine-uploader\all.fine-uploader\fine-uploader.min.css.map" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\azure.fine-uploader.core.js.map" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\azure.fine-uploader.core.min.js.map" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\azure.fine-uploader.js.map" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\azure.fine-uploader.min.js.map" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\fine-uploader-gallery.min.css.map" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\fine-uploader-new.min.css.map" />
+    <Content Include="node_modules\fine-uploader\azure.fine-uploader\fine-uploader.min.css.map" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\azure.jquery.fine-uploader.js.map" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\azure.jquery.fine-uploader.min.js.map" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\fine-uploader-gallery.min.css.map" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\fine-uploader-new.min.css.map" />
+    <Content Include="node_modules\fine-uploader\azure.jquery.fine-uploader\fine-uploader.min.css.map" />
+    <Content Include="node_modules\fine-uploader\dnd\dnd.js.map" />
+    <Content Include="node_modules\fine-uploader\dnd\dnd.min.js.map" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\fine-uploader-gallery.min.css.map" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\fine-uploader-new.min.css.map" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\fine-uploader.core.js.map" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\fine-uploader.core.min.js.map" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\fine-uploader.js.map" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\fine-uploader.min.css.map" />
+    <Content Include="node_modules\fine-uploader\fine-uploader\fine-uploader.min.js.map" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\fine-uploader-gallery.min.css.map" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\fine-uploader-new.min.css.map" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\fine-uploader.min.css.map" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\jquery.fine-uploader.js.map" />
+    <Content Include="node_modules\fine-uploader\jquery.fine-uploader\jquery.fine-uploader.min.js.map" />
+    <Content Include="node_modules\fine-uploader\LICENSE" />
+    <Content Include="node_modules\fine-uploader\package.json" />
+    <Content Include="node_modules\fine-uploader\README.md" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\fine-uploader-gallery.min.css.map" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\fine-uploader-new.min.css.map" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\fine-uploader.min.css.map" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\s3.fine-uploader.core.js.map" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\s3.fine-uploader.core.min.js.map" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\s3.fine-uploader.js.map" />
+    <Content Include="node_modules\fine-uploader\s3.fine-uploader\s3.fine-uploader.min.js.map" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\fine-uploader-gallery.min.css.map" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\fine-uploader-new.min.css.map" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\fine-uploader.min.css.map" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\s3.jquery.fine-uploader.js.map" />
+    <Content Include="node_modules\fine-uploader\s3.jquery.fine-uploader\s3.jquery.fine-uploader.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -266,8 +481,12 @@
     <Content Include="Views\MvcFileUpload\Downloads.cshtml" />
     <Content Include="Views\MvcFileUpload\Upload.cshtml" />
     <Content Include="Views\FileTree\Index.cshtml" />
+    <Content Include="Views\FineUploader\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <TypeScriptCompile Include="node_modules\fine-uploader\typescript\fine-uploader.d.ts" />
+    <TypeScriptCompile Include="node_modules\fine-uploader\typescript\fine-uploader.test.ts" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -275,11 +494,15 @@
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
