@@ -85,11 +85,17 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -194,14 +200,14 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\FileTreeController.cs" />
-    <Compile Include="Controllers\FileUploadRestSharpTest_Controller.cs" />
+    <Compile Include="Controllers\Api\FileUploadRestSharpTest_Controller.cs" />
     <Compile Include="Controllers\FineUploaderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\FileUploadController.cs" />
+    <Compile Include="Controllers\Api\FileUploadController.cs" />
     <Compile Include="Controllers\MvcFileUploadController.cs" />
-    <Compile Include="Controllers\TestLogUploadController.cs" />
+    <Compile Include="Controllers\Api\TestLogUploadController.cs" />
     <Compile Include="Controllers\TransactionLogFilter.cs" />
-    <Compile Include="Controllers\WorkoutController.cs" />
+    <Compile Include="Controllers\Api\WorkoutController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
