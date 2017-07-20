@@ -13,10 +13,36 @@
         // div#test.hello <div id="test" class="hello"></div>
         // <hr class="red" />
         // $('.red')
+        Dropzone.autoDiscover = false;
+
         $(function () {
-            $('#webapiDropzone').dropzone({ url: "/api/file/TestFile2" });
+            var testMatrixId = 1;
+            var testTrackerDmsId = 2;
+            var testConfigId = 3;
+
+            var postUrl = `/api/TestResultUpload/TestMatrix/${testMatrixId}/TestTracker/${testTrackerDmsId}/TestConfiguration/${testConfigId}/`;
+            //var postUrl = "/FileUpload/api/file/TestFile2";
+
+            var dd = $('#webapiDropzone').dropzone({ url: postUrl });
+
+            dd[0].dropzone.options.maxFilesize = 4000; // 2GB
+            dd[0].dropzone.options.timeout = 120000; // 2GB
+            Dropzone.forElement('#webapiDropzone').on('sending', function (file, xhr, formData) {
+                console.log('sending', file, xhr, formData);
+
+                // if file is actually a folder
+                if (file.fullPath) {
+                    formData.append("fullPath", file.fullPath);
+                }
+            }).on('drop', function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+
+                console.log('dropped', JSON.stringify(e), JSON.stringify(e.dataTransfer.files));
+            })
+
         });
-        
+
     </script>
 }
 
@@ -43,11 +69,11 @@
         <h2>Dropzone.js and File Upload via ApiController</h2>
 
         <p>
-            <a href="http://www.dropzonejs.com/#installation" 
+            <a href="http://www.dropzonejs.com/#installation"
                target="_blank">http://www.dropzonejs.com/#installation</a>
             Dropzone.js
         </p>
-        
+
         <form action="~/api/File/TestFile"
               class="dropzone"
               id="webapiDropzone"></form>
