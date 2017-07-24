@@ -1,0 +1,164 @@
+﻿
+@section Styles {
+    <!-- Fine Uploader Gallery CSS file
+    ====================================================================== -->
+    <link href="~/node_modules/fine-uploader/jquery.fine-uploader/fine-uploader-new.css" rel="stylesheet" />
+
+<style>
+    .DropZone1 {
+        width: 300px;
+        height: 90px;
+        background-color: #357A2B;
+        border-color: #CCCCCC;
+        color: #767676;
+        float: left;
+        text-align: center;
+        font-size: 16px;
+        color: white;
+    }
+
+    #DropZone2 {
+        width: 300px;
+        height: 90px;
+        background-color: #357A2B;
+        border-color: #CCCCCC;
+        color: #767676;
+        float: right;
+        text-align: center;
+        font-size: 16px;
+        color: white;
+    }
+
+    .demo-container .RadAsyncUpload {
+        text-align: center;
+        margin-left: 0;
+        margin-bottom: 28px;
+    }
+
+        .demo-container .RadAsyncUpload .ruFileWrap {
+            text-align: left;
+        }
+
+    .demo-container .RadUpload .ruUploadProgress {
+        width: 210px;
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        vertical-align: top;
+    }
+
+    html .demo-container .ruFakeInput {
+        width: 200px;
+    }
+
+    html .RadUpload .ruFileWrap {
+        position: relative;
+    }
+</style>
+
+}
+
+
+@section Scripts {
+
+<script>
+    (function () {
+        var $;
+        var demo = window.demo = window.demo || {};
+
+        demo.initialize = function () {
+            $ = $telerik.$;
+
+            if (!Telerik.Web.UI.RadAsyncUpload.Modules.FileApi.isAvailable()) {
+                $(".qsf-demo-canvas").html("<strong>Your browser does not support Drag and Drop. Please take a look at the info box for additional information.</strong>");
+            }
+            else {
+                $(document).bind({ "drop": function (e) { e.preventDefault(); } });
+
+                var dropZone1 = $(document).find(".DropZone1");
+                dropZone1.bind({ "dragenter": function (e) { dragEnterHandler(e, dropZone1); } })
+                         .bind({ "dragleave": function (e) { dragLeaveHandler(e, dropZone1); } })
+                         .bind({ "drop": function (e) { dropHandler(e, dropZone1); } });
+
+                var dropZone2 = $(document).find("#DropZone2");
+                dropZone2.bind({ "dragenter": function (e) { dragEnterHandler(e, dropZone2); } })
+                         .bind({ "dragleave": function (e) { dragLeaveHandler(e, dropZone2); } })
+                         .bind({ "drop": function (e) { dropHandler(e, dropZone2); } });
+            }
+        };
+
+        function dropHandler(e, dropZone) {
+            dropZone[0].style.backgroundColor = "#357A2B";
+        }
+
+        function dragEnterHandler(e, dropZone) {
+            var dt = e.originalEvent.dataTransfer;
+            var isFile = (dt.types != null && (dt.types.indexOf ? dt.types.indexOf('Files') != -1 : dt.types.contains('application/x-moz-file')));
+            if (isFile || $telerik.isSafari5 || $telerik.isIE10Mode || $telerik.isOpera)
+                dropZone[0].style.backgroundColor = "#000000";
+        }
+
+        function dragLeaveHandler(e, dropZone) {
+            if (!$telerik.isMouseOverElement(dropZone[0], e.originalEvent))
+                dropZone[0].style.backgroundColor = "#357A2B";
+        }
+
+
+    })();
+</script>
+}
+
+<h2>Index</h2>
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head runat="server">
+    <title>Telerik ASP.NET Example</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script type="text/javascript" src="scripts.js"></script>
+</head>
+
+
+
+<body>
+    <form id="form1" runat="server">
+        <telerik:RadScriptManager runat="server" ID="RadScriptManager1" />
+        <telerik:RadSkinManager ID="RadSkinManager1" runat="server" ShowChooser="true" />
+        <qsf:MessageBox ID="InformationBox1" Icon="Info" Type="Info" runat="server">
+            <p>
+                The Drag and Drop functionality relies on the HTML5 File API and Drag-And-Drop modules,
+                which means that it works in modern browsers only:
+            </p>
+            <p>Firefox 4+, Google Chrome, IE10+, Edge.</p>
+        </qsf:MessageBox>
+
+        <div class="demo-container size-wide">
+            <telerik:RadAsyncUpload RenderMode="Lightweight" runat="server" ID="RadAsyncUpload1" MultipleFileSelection="Automatic" DropZones=".DropZone1,#DropZone2" />
+
+            <div class="DropZone1">
+                <p>Custom Drop Zone</p>
+                <p>Drop Files Here</p>
+            </div>
+            <div id="DropZone2">
+                <p>Custom Drop Zone</p>
+                <p>Drop Files Here</p>
+            </div>
+        </div>
+
+        <telerik:RadScriptBlock runat="server">
+            <script type="text/javascript">
+            //<![CDATA[
+            Sys.Application.add_load(function () {
+                demo.initialize();
+            });
+            //]]>
+            </script>
+        </telerik:RadScriptBlock>
+
+    </form>
+</body>
+</html>
+

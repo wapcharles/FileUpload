@@ -18,7 +18,7 @@
     <AssemblyName>FileUpload</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -150,6 +150,14 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="Telerik.Web.UI, Version=2017.2.711.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Telerik.UI.for.AspNet.Ajax.Net45.Trial.2017.2.711\lib\net45\Telerik.Web.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Web.UI.Skins, Version=2017.2.711.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Telerik.UI.for.AspNet.Ajax.Net45.Trial.2017.2.711\lib\net45\Telerik.Web.UI.Skins.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Utilities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GW.Common.Utilities.1.0.7\lib\net451\Utilities.dll</HintPath>
     </Reference>
@@ -206,6 +214,7 @@
     <Compile Include="Controllers\Api\FileUploadController.cs" />
     <Compile Include="Controllers\MvcFileUploadController.cs" />
     <Compile Include="Controllers\Api\TestLogUploadController.cs" />
+    <Compile Include="Controllers\RadAsyncUploadController.cs" />
     <Compile Include="Controllers\TransactionLogFilter.cs" />
     <Compile Include="Controllers\Api\WorkoutController.cs" />
     <Compile Include="Global.asax.cs">
@@ -469,7 +478,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -488,10 +499,7 @@
     <Content Include="Views\MvcFileUpload\Upload.cshtml" />
     <Content Include="Views\FileTree\Index.cshtml" />
     <Content Include="Views\FineUploader\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="node_modules\fine-uploader\typescript\fine-uploader.d.ts" />
-    <TypeScriptCompile Include="node_modules\fine-uploader\typescript\fine-uploader.test.ts" />
+    <Content Include="Views\RadAsyncUpload\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -508,6 +516,10 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <TelerikWebUIAssembliesSourceDir>..\packages\Telerik.UI.for.AspNet.Ajax.Net45.Trial.2017.2.711\lib\net45</TelerikWebUIAssembliesSourceDir>
+    <BuildDependsOn>$(BuildDependsOn);CopyTelerikWebUIUtilityAssemblies</BuildDependsOn>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -522,7 +534,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54320</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:54320/</IISUrl>
+          <IISUrl>http://localhost/FileUpload</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -538,6 +550,15 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <Target Name="CopyTelerikWebUIUtilityAssemblies">
+    <PropertyGroup>
+      <TelerikWebUIAssembliesSourceDirFullPath>$([System.IO.Path]::GetFullPath('$(TelerikWebUIAssembliesSourceDir)'))</TelerikWebUIAssembliesSourceDirFullPath>
+    </PropertyGroup>
+    <ItemGroup>
+      <TelerikWebUIAssemblies Include="$(TelerikWebUIAssembliesSourceDirFullPath)\Telerik.Web.Design.dll" />
+    </ItemGroup>
+    <Copy SourceFiles="@(TelerikWebUIAssemblies)" DestinationFolder="$(TargetDir)" SkipUnchangedFiles="true" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
